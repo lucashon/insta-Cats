@@ -17,6 +17,13 @@
   <navbar id="navbar">
     {{> navbar}}
   </navbar>
+  {{#if messages.message}}
+<div class="alert alert-primary" role="alert">
+ <strong>  {{messages.message}}</strong>
+</div>
+  
+ 
+  {{/if}}
   {{> registrar}}
 
   {{> login}}

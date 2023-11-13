@@ -13,7 +13,7 @@ const Publication = require('./models/Publication');
 const Like = require('./models/Like');
 const Comments = require('./models/comments');
 
-
+const router = require('./routes/authRouter')
 
 const hbs = exphbs.create({
   partialsDir: ['views/partials']
@@ -54,6 +54,8 @@ app.use((request, response, next)=>{
   }
   next()
 })
+
+app.use('/', router)
 
 app.get('/', (req, res) => {
   return res.render('home')

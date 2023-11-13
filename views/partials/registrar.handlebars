@@ -6,22 +6,22 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <form class="form-box" action="" method="post">
+       <form class="form-box" action="/register" method="post">
         <div class="caixa-form">
             <label >Usuário:</label>
-            <input type="text">
+            <input type="text" name="nome" required>
         </div>
         <div class="caixa-form">
             <label >Email:</label>
-            <input type="text">
+            <input type="text" name="email" required>
         </div>
         <div class="caixa-form">
             <label >senha:</label>
-            <input type="text">
+            <input type="password" name="password" required>
         </div>
         <div class="caixa-form">
             <label >repita a Senha:</label>
-            <input type="text">
+            <input type="password" name="repeatPassword" required>
         </div>
         <input class="submmit-login" type="submit" value="Entrar">
 
