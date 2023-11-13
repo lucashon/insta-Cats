@@ -1,0 +1,56 @@
+.caixa{
+    display: flex;
+    flex-wrap: wrap;
+    width: 1600px;
+    gap: .5rem;
+    margin: auto;
+}
+.foto1{
+    width: 528px;
+}
+.foto2{
+    width: 792px;
+}
+.foto3{
+    width: 1593px;
+}
+
+.modal-title::before{
+    content: "" ;
+    padding: 8px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: #eb6440;
+    border-radius:3px;
+}
+
+
+.modal-footer{
+    justify-content: start !important;
+}
+
+.caixa-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.caixa-form input{
+    border: none;
+    border-radius: 5px;
+    background-color: #c9c2c2;
+    width: 400px;
+    height: 50px;
+    margin: 10px;
+}
+.submmit-login{
+    border: none !important;
+    border-radius: 5px;
+    background-color: #eb6440 !important; 
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    margin: 10px;
+    width: 100px;
+    height: 50px;
+}
+

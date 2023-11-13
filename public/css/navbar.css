@@ -1,0 +1,11 @@
+.navbar-bg{
+    background-color: #eb6440;
+}
+.navbar{
+    margin-bottom: 40px;
+}
+.logo-img{
+    width: 65px;
+    height: 70px;
+    rotate: 180deg;
+}
