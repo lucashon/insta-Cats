@@ -3,19 +3,13 @@ const { DataTypes } = require('sequelize')
 
 // 02 importar arquivo conn
 const conn = require('../db/conn')
+
 const User = require('../models/User')
 const Publication = require('../models/Publication')
 
-const Like = conn.define('like',{
-    id:{
-        type: DataTypes.STRING,
-        require: true,
-        primaryKey: true
-    },
+const Like = conn.define('like',{})
 
-})
-
-User.belongsToMany(Publication,{through: 'likes'})
-Publication.belongsToMany(User,{through: 'likes'})
+User.belongsToMany(Publication,{through: 'like'})
+Publication.belongsToMany(User,{through: 'like'})
 
 module.exports = Like

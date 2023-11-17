@@ -13,8 +13,11 @@ const Publication = require('./models/Publication');
 const Like = require('./models/Like');
 const Comments = require('./models/comments');
 
+
+
 const router = require('./routes/authRouter')
 const PublicationRouter = require('./routes/publicationRouter')
+const likeRouter = require('./routes/likeRouter')
 const hbs = exphbs.create({
   partialsDir: ['views/partials']
 })
@@ -58,6 +61,7 @@ app.use((request, response, next)=>{
 
 app.use("/", router);
 app.use("/", PublicationRouter);
+app.use("/", likeRouter);
 
 
 app.get('/', (req, res) => {
