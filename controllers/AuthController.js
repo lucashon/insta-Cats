@@ -6,7 +6,7 @@ module.exports = class AuthController{
 
     static async registePost(request, response){
         const {nome, email, password, repeatPassword} = request.body
-        console.log(nome, email,password, repeatPassword)
+        console.log(nome, email, password, repeatPassword)
 
         if(password != repeatPassword){
             request.flash('message', 'As senhas não conferem')
@@ -19,10 +19,12 @@ module.exports = class AuthController{
         if(checkIfUserExist){
 
         }
+        const salt = bcrypt.genSaltSync(10)
+		const hashedPassword = bcrypt.hashSync(password + salt)
         const user = {
             nome,
             email,
-            password
+            password: hashedPassword
         }
 
         try {
@@ -41,12 +43,31 @@ module.exports = class AuthController{
     }
     static async loginPost(request, response){
         const {email, password} = request.body
-        const user = await User.findOne({where:{email:email}})
+        const user = await User.findOne({where:{email: email}})
+
         if(!user){
             request.flash('message', 'Usuário não encontrado')
             response.render('home')
             return
         }
+
+        const passwordMatch = bcrypt.compareSync(password, user.password)
+        console.log(passwordMatch)
+        console.log(password, user.password)
+
+        if(!passwordMatch){
+            request.flash('message', 'Senha inválida')
+            response.render('home')
+        }
+
+        request.session.userId = user.id
+        
+        request.flash('message', 'Usuário autenticado com sucesso')
+
+        request.session.save(() => {
+            response.render('home')
+        })
+
         console.log('chegou')
     }
 }
