@@ -14,16 +14,20 @@
 </head>
 <body>
 
-  <navbar id="navbar">
+
+   {{#if session.userId}}
+    {{> navbarLogado}}
+   {{else}}
     {{> navbar}}
-  </navbar>
-  {{#if messages.message}}
+    {{/if}}
+
+    
+  {{!-- {{#if messages.message}}
 <div class="alert alert-primary" role="alert">
  <strong>  {{messages.message}}</strong>
 </div>
-  
- 
-  {{/if}}
+  {{/if}} --}}
+
   {{> registrar}}
 
   {{> login}}

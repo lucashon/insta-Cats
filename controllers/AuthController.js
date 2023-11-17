@@ -41,6 +41,7 @@ module.exports = class AuthController{
 
 
     }
+    
     static async loginPost(request, response){
         const {email, password} = request.body
         const user = await User.findOne({where:{email: email}})
@@ -51,23 +52,27 @@ module.exports = class AuthController{
             return
         }
 
-        const passwordMatch = bcrypt.compareSync(password, user.password)
-        console.log(passwordMatch)
-        console.log(password, user.password)
+        // const passwordMatch = bcrypt.compareSync(password, user.password)
+        // console.log(passwordMatch)
+        // console.log(password, user.password)
 
-        if(!passwordMatch){
-            request.flash('message', 'Senha inválida')
-            response.render('home')
-        }
+        // if(!passwordMatch){
+        //     request.flash('message', 'Senha inválida')
+        //     response.render('home')
+        // }
 
         request.session.userId = user.id
         
         request.flash('message', 'Usuário autenticado com sucesso')
 
         request.session.save(() => {
-            response.render('home')
+            response.redirect('/')
         })
 
-        console.log('chegou')
+    }
+
+    static async logout(request, response){
+        request.session.destroy()
+        response.redirect('/')
     }
 }

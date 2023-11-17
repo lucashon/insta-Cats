@@ -1,4 +1,22 @@
-<section class="caixa">
+
+<main class="caixa">
+  {{#each publications}}
+    <div class="action-buttons">
+    <img src="/assets/img/{{this.publication}}.jpg" alt="" />
+      <form action="/like" method="post">
+        <input type="hidden" name="id" value="{{this.id}}">
+        <button type="submit">Like</button>
+      </form>
+      <form action="/comment" method="post">
+        <input type="hidden" name="id" value="{{this.id}}">
+        <input type="text" name="comment" required="true">
+        <button type="submit"> > </button>
+      </form>
+    </div>
+  {{/each}}
+</main>
+
+{{!-- <section class="caixa">
     <img class="foto1" src="./assets/img/cat01.jpg" alt="">
     <img class="foto1" src="./assets/img/cat02.jpg" alt="">
     <img class="foto1" src="./assets/img/cat05.jpg" alt="">
@@ -17,4 +35,4 @@
 
         <img class="foto3" src="./assets/img/cat07.jpg" alt="">
 
-</section>
+</section> --}}
